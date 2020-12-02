@@ -61,7 +61,7 @@ class Display extends Component {
                     this.setState({message: "Could not update. Please, select a polling unit and pass an integer to 'score'"})
                 }
                 else{
-                    console.log("data:", data);
+                    this.setState({showForm: false})
                     this.setState({message: 'Results updated'})
                 }
             })
@@ -98,18 +98,18 @@ class Display extends Component {
 
                                        {this.state.showForm && (
                                             <div className="form">
-                                                <div> Polling Unit Unique ID: {context.state.selected.pollingUnit}</div>                                                
+                                                <div className="puid"> Polling Unit Unique ID: {context.state.selected.pollingUnit}</div>                                                
                                                 <div>
-                                                    Party: <input name="party" onChange={this.handleChange.bind(this)} type="text" value={this.state.form.party}/>
+                                                    <input name="party" onChange={this.handleChange.bind(this)} type="text" placeholder="Party Abbreviation" value={this.state.form.party}/>
                                                 </div>
                                                 <div>
-                                                    Score: <input name="score" onChange={this.handleChange.bind(this)} type="text" value={this.state.form.score}/>
+                                                    <input name="score" onChange={this.handleChange.bind(this)} type="text" placeholder="Score" value={this.state.form.score}/>
                                                 </div>
                                                 <div>
-                                                    Enter by: <input name="name" onChange={this.handleChange.bind(this)} type="text" placeholder="Your name" value={this.state.form.name}/>
+                                                    <input name="name" onChange={this.handleChange.bind(this)} type="text" placeholder="Your name" value={this.state.form.name}/>
                                                 </div>
 
-                                                <button onClick={()=>this.handleSubmit(context)}>Submit Results</button>
+                                                <button onClick={()=>this.handleSubmit(context)}>Submit Score</button>
                                             </div>
                                         )}
                                         {
