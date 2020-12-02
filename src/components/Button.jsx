@@ -1,5 +1,6 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import Config from './config/config'
+import Loader from './Loader';
 
 class Button extends Component {
     constructor(props){
@@ -9,11 +10,14 @@ class Button extends Component {
             text: this.props.text,
             level: this.props.level,
             endpoint: this.props.endpoint,
-            context: this.props.context
+            context: this.props.context,
+            selected: this.props.selected,
+            loading: false
         }
     }
 
     handleClick(e) {
+        this.setState({loading: true})
         fetch(Config.API+this.state.endpoint)
         .then(response=>response.json())
         .then(data=>{
@@ -22,9 +26,11 @@ class Button extends Component {
                 newState[this.state.level.next] = data.result;
                                 
                 this.state.context.updateState(newState)
+                this.setState({loading: false})
         })
 
         if(this.state.level.current === "lga"){
+            this.setState({loading: true})
             fetch(Config.API+`/LGAs/${this.state.level.id}/summedresults`)
             .then(response=>response.json())
             .then(data=>{
@@ -32,15 +38,19 @@ class Button extends Component {
                     newState['results'] = data.summed;
                     console.log(newState, this.state.context);
                     this.state.context.updateState(newState)
+                    this.setState({loading: false})
             })
         }
     }
 
     render(){
         return(
-                <button className="button" onClick={this.handleClick.bind(this)}>
+            <React.Fragment>
+                {this.state.loading && <Loader />}
+                <button className={`button ${this.state.context.state.selected[this.state.level.current] === this.state.level.id ? 'selected' : ''}`}  onClick={this.handleClick.bind(this)} >
                     {this.state.text}
                 </button>
+            </React.Fragment>
         )
     }
 }

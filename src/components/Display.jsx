@@ -1,6 +1,7 @@
 import { Component } from "react";
 import config from "./config/config";
-import { Context } from './Context/Provider'
+import { Context } from './Context/Provider';
+import Loader from './Loader';
 
 class Display extends Component {
     constructor(props){
@@ -14,6 +15,7 @@ class Display extends Component {
                 name: '',
             },
             message: "",
+            loading: false
         }
     }
 
@@ -31,13 +33,12 @@ class Display extends Component {
     }
 
     handleSubmit(context){
-        console.log(context);
         if(!(this.state.form.party && this.state.form.score && this.state.form.name)){
             return this.setState({
                 message: "Fill all fields to proceed"
             })
         }
-
+        this.setState({loading: false})
         fetch(config.API+`/pollingUnits/${context.state.selected.pollingUnit}/results`, 
         {
             method: 'post',
@@ -64,20 +65,23 @@ class Display extends Component {
                     this.setState({showForm: false})
                     this.setState({message: 'Results updated'})
                 }
+                this.setState({loading: false})
             })
+            this.setState({loading: false})
     }
 
     render(){
         return(
             <div className="display">                
                 
-
+            {this.state.loading && <Loader />}
             <Context.Consumer> 
 
                     {                        
-                        (context) => (    
-                                                                
-                                context.state.results.map(result=>{
+                        (context) => (   
+                                <div>
+                                {context.state.results[0] && <div className="puid">{context.state.results[0].entered_by_user ? 'Polling Unit Results': 'Estimated LGA Results'}</div>}             
+                                {context.state.results.map(result=>{
                                 return (
                                     <div key={result.party_abbreviation} className="result">  
                                         <div>{result.party_abbreviation}</div>
@@ -85,7 +89,7 @@ class Display extends Component {
                                         {result.entered_by_user && <div>Entered By: {result.entered_by_user}</div>}
                                     </div>
                                 )                            
-                            })
+                            })}</div> 
                             
                         )
                     }
