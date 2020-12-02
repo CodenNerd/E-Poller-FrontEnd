@@ -132,7 +132,7 @@ body{
 }
 .result>div:nth-child(3){
   color: grey;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: lighter;
 }
 .form-container{
@@ -148,10 +148,50 @@ body{
   color: #1e6262; 
   background: #fff;
   padding: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px lightgray inset;
 }
 .form{
+  position: absolute;
+  top: 0px;
+  left: -50px;
+  background: white;
+  width: 500px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 10px 10px 100px 1000px rgba(0, 0, 0, 0.082);
+  /* float: right; */
+}
 
+.form input{
+  width: 80%;
+  display: block;
+  height: 40px;
+  background: rgba(211, 211, 211, 0.24);
+  border-radius: 3px;
+  border: 1px solid lightgrey;
+  margin: 10px auto;
+  padding: 5px 15px;
+}
+.form button{
+  background: #49beb7;
+  padding: 15px 40px;
+  border: 1px solid transparent;
+  margin: 35px;
+  color: white;
+}
+.puid{
+  color: #1e6262;
+  padding: 20px 40px;
 }
 .message{
-
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  padding: 20px 200px;
+  border-left: 5px solid #49beb7;
+  margin-bottom: 30px;
+  background: white;
+  color: grey;
 }
