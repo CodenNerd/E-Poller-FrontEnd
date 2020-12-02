@@ -99,6 +99,14 @@ body{
   padding: 10px 30px;
   border: 1px solid lightgrey;
 }
+.button.selected{
+  background: #1e6262;
+  color: white;
+}
+.state .selected {
+  color: #1e6262;
+  background: #fff;
+}
 
 .display{
   position: absolute;
@@ -135,9 +143,7 @@ body{
   font-size: 12px;
   font-weight: lighter;
 }
-.form-container{
 
-}
 .store{
   float: right;
   position: fixed;
@@ -194,4 +200,11 @@ body{
   margin-bottom: 30px;
   background: white;
   color: grey;
+}
+
+.loader{
+  position: fixed;
+  top: 150px;
+  left: 40%;
+  z-index: 5;
 }

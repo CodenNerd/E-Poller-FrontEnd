@@ -10,7 +10,7 @@ class States extends Component {
                     {
                         (context) => (
                                 context.state.states.map(state=>{
-                                return <Button context={context} key={state.state_id} text={state.state_name} level={{current: 'state', id: state.state_id, next: 'lgas'}} endpoint={`/states/${state.state_id}/LGAs`}/>
+                                return <Button selected={state.state_id===context.state.selected.state} context={context} key={state.state_id} text={state.state_name} level={{current: 'state', id: state.state_id, next: 'lgas'}} endpoint={`/states/${state.state_id}/LGAs`}/>
                             })
                         )
                     }
