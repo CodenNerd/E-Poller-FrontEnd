@@ -15,7 +15,8 @@ class App extends Component {
 
     render(){
         return(
-            <Provider>
+            <Provider className="app">
+                <div className="header"><b>Election</b> Poller</div>
                 <Group />
                 <Display />
             </Provider>
