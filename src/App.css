@@ -57,6 +57,9 @@ body{
   font: outline;
   padding: 20px;
 }
+.lga:empty, .ward:empty, .polling-unit:empty{
+  display: none;
+}
 
 .lga>button, .ward>button, .polling-unit>button{
   margin: 10px;
@@ -98,6 +101,10 @@ body{
   background: transparent;
   padding: 10px 30px;
   border: 1px solid lightgrey;
+}
+.button:focus{
+  outline: none;
+  opacity: 0.8;
 }
 .button.selected{
   background: #1e6262;

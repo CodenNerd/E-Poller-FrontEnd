@@ -47,7 +47,7 @@ class Button extends Component {
         return(
             <React.Fragment>
                 {this.state.loading && <Loader />}
-                <button className={`button ${this.state.context.state.selected[this.state.level.current] == this.state.level.id ? 'selected' : ''}`}  onClick={this.handleClick.bind(this)} >
+                <button className={`button ${this.state.context.state.selected[this.state.level.current] === this.state.level.id ? 'selected' : ''}`}  onClick={this.handleClick.bind(this)} >
                     {this.state.text}
                 </button>
             </React.Fragment>
