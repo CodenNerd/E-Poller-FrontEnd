@@ -38,11 +38,9 @@ class Button extends Component {
 
     render(){
         return(
-            <div>
-                <button onClick={this.handleClick.bind(this)}>
+                <button className="button" onClick={this.handleClick.bind(this)}>
                     {this.state.text}
                 </button>
-            </div>
         )
     }
 }

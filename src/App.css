@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+*{
+  transition: 0.5s;
+}
+body{
+  background: #fff;
+}
+.header{
+  font-size: 30px;
+  -webkit-text-stroke: 1px #1e6262;
+  color: #fff;
+  padding: 10px;
+}
+.header>b{
+  color: #1e6262;
+  -webkit-text-stroke: 0px #1e6262;
+}
+.group{
+  width: 100%;
+  padding: 0px;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.state, .lga, .ward, .polling-unit {
+  display: inline-block;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.state{
+  display: block;
+  justify-content: justify;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.state>button{
+  background: #2d767f;
   color: white;
+  border: 1px double #b4f1f1;
+  border-radius: 5px;
+}
+.lga {
+  display: inline-block;
+  background: white;
+  border: 1px solid rgb(241, 241, 241);
+  width: 60%;
+  box-shadow: 1px 1px 10px lightgray;
+}
+.lga::before{
+  content: 'Select an LGA';
+}
+.ward::before{
+  content: 'Select a Ward';
+}
+.polling-unit::before{
+  content: 'Select a Polling Unit';
+}
+.lga::before, .ward::before, .polling-unit::before{
+  display: block;
+  color: #1e6262;
+  font-size: large;
+  text-align: center;
+  font: outline;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.lga>button, .ward>button, .polling-unit>button{
+  margin: 10px;
+  background: lightgrey;
+  padding: 5px 10px;  
+  border-radius: 10px;
+  font-size: small;
+}
+.lwp{
+  margin-top: 80px;
+  width: 25%;
+  padding: 20px;
+}
+.wp {
+  float: right;
+  width: 30%;
+}
+.ward{
+  display: inline-block;
+  background: white;
+  border: 1px solid lightgray;
+  width: 180%;
+  margin: 30px 0px;
+  border-radius: 10px;
+  /* float: right; */
+  box-shadow: 1px 1px 10px lightgray;
+}
+.polling-unit {
+  display: inline-block;
+  background: white;
+  border: 1px solid lightgray;
+  width: 180%;
+  border-radius: 10px;
+  /* float: right; */
+  box-shadow: 1px 1px 10px lightgray;
+}
+.button {
+  color: #1e6262;
+  background: transparent;
+  padding: 10px 30px;
+  border: 1px solid lightgrey;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.display{
+  position: absolute;
+  top: 250px;
+  left: 36%;
+  background: #fff;
+  min-height: 300px;
+  width: 60%;
+  border: 3px double lightgray;
+  box-shadow: 1px 1px 10px lightgray;
+}
+.result{
+  
+}
+.form-container{
+
+}
+.store{
+  float: right;
+  position: fixed;
+  top: 0px;
+  left: 75%;
+  margin: 10px;
+  border: 1px solid #feb062;
+  color: white; 
+  background: #feb062;
+  padding: 10px;
+}
+.form{
+
+}
+.message{
+
 }

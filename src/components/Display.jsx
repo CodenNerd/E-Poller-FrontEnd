@@ -69,7 +69,7 @@ class Display extends Component {
 
     render(){
         return(
-            <div>                
+            <div className="display">                
                 
 
             <Context.Consumer> 
@@ -79,7 +79,7 @@ class Display extends Component {
                                                                 
                                 context.state.results.map(result=>{
                                 return (
-                                    <div key={result.party_abbreviation}>  
+                                    <div key={result.party_abbreviation} className="result">  
                                         <div>{result.party_abbreviation}</div>
                                         <div>{result.party_score}</div>
                                         {result.entered_by_user && <div>Entered By: {result.entered_by_user}</div>}
@@ -93,11 +93,11 @@ class Display extends Component {
             <Context.Consumer>
                         {
                             (context)=>(
-                                    <div>                
-                                    <button onClick={this.handleClick.bind(this)} >{ this.state.showForm ? 'x' : 'Store results for a new polling unit' }</button>
+                                    <div className="form-container">                
+                                    <button className="store" onClick={this.handleClick.bind(this)} >{ this.state.showForm ? 'close' : 'Store results for a new polling unit' }</button>
 
                                        {this.state.showForm && (
-                                            <div>
+                                            <div className="form">
                                                 <div> Polling Unit Unique ID: {context.state.selected.pollingUnit}</div>                                                
                                                 <div>
                                                     Party: <input name="party" onChange={this.handleChange.bind(this)} type="text" value={this.state.form.party}/>
@@ -114,7 +114,7 @@ class Display extends Component {
                                         )}
                                         {
                                             this.state.message && 
-                                                <div>
+                                                <div className="message">
                                                     {this.state.message}
                                                 </div>
                                         }
