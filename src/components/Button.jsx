@@ -23,6 +23,17 @@ class Button extends Component {
                                 
                 this.state.context.updateState(newState)
         })
+
+        if(this.state.level.current === "lga"){
+            fetch(Config.API+`/LGAs/${this.state.level.id}/summedresults`)
+            .then(response=>response.json())
+            .then(data=>{
+                    const newState = this.state.context.state;
+                    newState['results'] = data.summed;
+                    console.log(newState, this.state.context);
+                    this.state.context.updateState(newState)
+            })
+        }
     }
 
     render(){

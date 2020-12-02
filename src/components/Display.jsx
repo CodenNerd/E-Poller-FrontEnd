@@ -75,13 +75,14 @@ class Display extends Component {
             <Context.Consumer> 
 
                     {                        
-                        (context) => (                                        
+                        (context) => (    
+                                                                
                                 context.state.results.map(result=>{
                                 return (
-                                    <div>                
+                                    <div key={result.party_abbreviation}>  
                                         <div>{result.party_abbreviation}</div>
                                         <div>{result.party_score}</div>
-                                        <div>Entered By: {result.entered_by_user}</div>
+                                        {result.entered_by_user && <div>Entered By: {result.entered_by_user}</div>}
                                     </div>
                                 )                            
                             })
