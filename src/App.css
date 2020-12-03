@@ -27,7 +27,7 @@ body{
   display: block;
   justify-content: justify;
 }
-.state>button{
+.state button{
   background: #2d767f;
   color: white;
   border: 1px double #b4f1f1;
@@ -61,7 +61,7 @@ body{
   display: none;
 }
 
-.lga>button, .ward>button, .polling-unit>button{
+.lga button, .ward button, .polling-unit button{
   margin: 10px;
   background: lightgrey;
   padding: 5px 10px;  

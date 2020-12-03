@@ -2,6 +2,7 @@ import { Component } from "react";
 import config from "./config/config";
 import { Context } from './Context/Provider';
 import Loader from './Loader';
+import {Link} from "react-router-dom";
 
 class Display extends Component {
     constructor(props){
@@ -51,7 +52,6 @@ class Display extends Component {
             }),
             headers: {
                 "Content-Type": "application/json",
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             }
         }).then(response=>response.json())
             .then(data=>{
@@ -80,7 +80,7 @@ class Display extends Component {
                     {                        
                         (context) => (   
                                 <div>
-                                {context.state.results[0] && <div className="puid">{context.state.results[0].entered_by_user ? 'Polling Unit Results': 'Estimated LGA Results'}</div>}             
+                                {context.state.results[0] && <div className="puid">{context.state.results[0].entered_by_user ? 'Polling Unit Results': 'Estimated LGA Results for '+ context.state.lastUpdatedLGA}</div>}             
                                 {context.state.results.map(result=>{
                                 return (
                                     <div key={result.party_abbreviation} className="result">  
@@ -98,8 +98,9 @@ class Display extends Component {
                         {
                             (context)=>(
                                     <div className="form-container">                
-                                    <button className="store" onClick={this.handleClick.bind(this)} >{ this.state.showForm ? 'close' : 'Store results for a new polling unit' }</button>
-
+                                   <Link to="/results">
+                                       <button className="store" onClick={this.handleClick.bind(this)} >{ this.state.showForm ? 'close' : 'Store results for a new polling unit' }</button>
+                                    </Link> 
                                        {this.state.showForm && (
                                             <div className="form">
                                                 <div className="puid"> Polling Unit Unique ID: {context.state.selected.pollingUnit}</div>                                                
