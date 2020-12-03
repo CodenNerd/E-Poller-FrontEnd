@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Button from './Button';
 import {Context} from './Context/Provider'
+import {Link} from "react-router-dom";
 
 class LGAs extends Component {
     constructor(props){
@@ -18,7 +19,7 @@ class LGAs extends Component {
                     {
                         (context) => (
                             context.state.lgas.map(lga=>{
-                                return <Button context={context} key={lga.lga_id} text={lga.lga_name} level={{current: 'lga', id: lga.lga_id, next: 'wards'}} endpoint={`/LGAs/${lga.lga_id}/wards`} />
+                                return <Link to="/wards"><Button context={context} key={lga.lga_id} text={lga.lga_name} level={{current: 'lga', id: lga.lga_id, next: 'wards'}} endpoint={`/LGAs/${lga.lga_id}/wards`} /></Link>
                              })
                         )
                     }

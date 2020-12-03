@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Button from './Button';
 import { Context } from './Context/Provider'
+import {Link} from "react-router-dom";
 
 class Wards extends Component {
     constructor(props){
@@ -17,7 +18,7 @@ class Wards extends Component {
                     {
                         (context) => (
                             context.state.wards.map(ward=>{
-                                return <Button context={context} key={ward.uniqueid} text={ward.ward_name} level={{current: 'ward', id: ward.ward_id, next: 'pollingUnits'}} endpoint={`/LGAs/${context.state.selected.lga}/wards/${ward.ward_id}/pollingUnits`} />
+                                return <Link to="/polling-units"><Button context={context} key={ward.uniqueid} text={ward.ward_name} level={{current: 'ward', id: ward.ward_id, next: 'pollingUnits'}} endpoint={`/LGAs/${context.state.selected.lga}/wards/${ward.ward_id}/pollingUnits`} /></Link>
                             })
                         )
                     }

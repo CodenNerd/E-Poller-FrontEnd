@@ -36,6 +36,7 @@ class Button extends Component {
             .then(data=>{
                     const newState = this.state.context.state;
                     newState['results'] = data.summed;
+                    newState.lastUpdatedLGA = this.state.text;
                     console.log(newState, this.state.context);
                     this.state.context.updateState(newState)
                     this.setState({loading: false})
